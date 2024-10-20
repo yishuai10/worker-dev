@@ -5,6 +5,8 @@ server:
     max-swallow-size: 1024
 
 spring:
+  application:
+    name: user-service
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -20,3 +22,9 @@ spring:
       pool-name: DataSourceHikariCP
       auto-commit: true
       connection-test-query: SELECT 1
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.0.250:8848
+        username: nacos
+        password: nacos

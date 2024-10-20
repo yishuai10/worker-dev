@@ -8,7 +8,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author 小秋
- * @since 2024-10-15
+ * @since 2024-10-20
  */
 public class SysParams implements Serializable {
 

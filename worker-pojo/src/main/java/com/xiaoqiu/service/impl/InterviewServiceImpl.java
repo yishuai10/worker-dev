@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author 小秋
- * @since 2024-10-15
+ * @since 2024-10-20
  */
 @Service
 public class InterviewServiceImpl extends ServiceImpl<InterviewMapper, Interview> implements InterviewService {
