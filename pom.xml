@@ -22,6 +22,7 @@
     <module>worker-api</module>
     <module>service-user-7001</module>
     <module>service-company-6001</module>
+      <module>gateway</module>
   </modules>
 
   <properties>
@@ -62,6 +63,11 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-bootstrap</artifactId>
+      </dependency>
+
 
       <dependency>
         <groupId>mysql</groupId>
