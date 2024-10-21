@@ -34,7 +34,8 @@
     <jackson.version>2.15.2</jackson.version>
     <mybatis-plus.version>3.5.7</mybatis-plus.version>
     <mybatis-spring.version>3.0.2</mybatis-spring.version>
-
+    <mysql.version>8.0.26</mysql.version>
+    <cloud-bootstrap.version>3.0.2</cloud-bootstrap.version>
   </properties>
 
   <parent>
@@ -63,18 +64,19 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+      <!--  从2020.0开始，bootstrap.yml默认不开启，需要单独配置开启或引入这个依赖    -->
       <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        <version>${cloud-bootstrap.version}</version>
       </dependency>
-
-
+      <!--      MySQL驱动-->
       <dependency>
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
-        <version>8.0.26</version>
+        <version>${mysql.version}</version>
       </dependency>
-
+      <!--Mybatis-plus-->
       <dependency>
         <groupId>com.baomidou</groupId>
         <artifactId>mybatis-plus-boot-starter</artifactId>
