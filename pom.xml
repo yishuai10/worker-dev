@@ -14,15 +14,13 @@
       worker-common: 通用工程，管理工具类、枚举类、异常类、常用属性类、资源类
       worker-pojo: 所有实体类， pojo、bean、entity、bo、vo、dto
       worker-api: web接口（应用）的公用依赖
-      service-user-7001: 用户服务，提供用户相关的接口
-      service-company-6001: 公司服务，提供公司相关的接口
+      service-gateway-8000: 网关服务
+      service-auth-8001: 认证服务
     -->
     <module>worker-common</module>
     <module>worker-pojo</module>
     <module>worker-api</module>
-    <module>service-user-7001</module>
-    <module>service-company-6001</module>
-      <module>service-gateway-8000</module>
+    <module>service-gateway-8000</module>
     <module>service-auth-8001</module>
   </modules>
 
