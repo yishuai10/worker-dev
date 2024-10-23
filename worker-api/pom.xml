@@ -20,7 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>com.xiaoqiu</groupId>
-            <artifactId>worker-common</artifactId>
+            <artifactId>worker-pojo</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

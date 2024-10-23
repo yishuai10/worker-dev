@@ -114,7 +114,13 @@ public enum ResponseStatusEnum {
 
 
     // admin 相关错误代码
-    ADMIN_NOT_EXIST(5101, false, "管理员不存在！");
+    ADMIN_NOT_EXIST(5101, false, "管理员不存在！"),
+
+    // 自定义异常 7000开始
+
+    ;
+
+
 
     // 响应业务状态
     private final Integer status;

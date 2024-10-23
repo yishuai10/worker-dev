@@ -22,8 +22,8 @@
     <module>worker-api</module>
     <module>service-user-7001</module>
     <module>service-company-6001</module>
-      <module>gateway-service</module>
-    <module>auth-service</module>
+      <module>service-gateway-8000</module>
+    <module>service-auth-8001</module>
   </modules>
 
   <properties>

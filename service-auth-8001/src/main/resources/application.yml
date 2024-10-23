@@ -16,6 +16,8 @@ spring:
       pool-name: DataSourceHikariCP
       auto-commit: true
       connection-test-query: SELECT 1
+  jackson:
+    property-naming-strategy: SNAKE_CASE
   cloud:
     nacos:
       config:

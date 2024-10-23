@@ -29,6 +29,13 @@ public class R<T> {
 
     }
 
+    public R(T data) {
+        this.code = HttpStatusEnum.SUCCESS.getCode();
+        this.success = true;
+        this.message = HttpStatusEnum.SUCCESS.getMessage();
+        this.data = data;
+    }
+
     public R(Integer code, Boolean success, String message, T data) {
         this.code = code;
         this.success = success;
@@ -60,6 +67,13 @@ public class R<T> {
     /**
      * 失败返回
      */
+    public static <T> R<T> failed(Integer code, String message) {
+        return new R<>(code, false, message, null);
+    }
+
+    /**
+     * 失败返回
+     */
     public static <T> R<T> failed(HttpStatusEnum httpStatusEnum) {
         return new R<>(httpStatusEnum.getCode(), false, httpStatusEnum.getMessage(), null);
     }
@@ -69,6 +83,20 @@ public class R<T> {
      */
     public static <T> R<T> failed(String message) {
         return new R<>(HttpStatusEnum.FAIL.getCode(), false, message, null);
+    }
+
+    /**
+     * 失败返回
+     */
+    public static <T> R<T> failed(T data) {
+        return new R<>(HttpStatusEnum.FAIL.getCode(), false, HttpStatusEnum.FAIL.getMessage(), data);
+    }
+
+    /**
+     * 失败返回
+     */
+    public static <T> R<T> failed(String msg, T data) {
+        return new R<>(HttpStatusEnum.FAIL.getCode(), false, msg, data);
     }
 }
 

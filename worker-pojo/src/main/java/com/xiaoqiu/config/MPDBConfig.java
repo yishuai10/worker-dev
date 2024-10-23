@@ -23,7 +23,7 @@ public class MPDBConfig {
         gc.setFileOverride(true);      // 多次生成是否覆盖之前的
 //        gc.setActiveRecord(true);      // 设置是否开启AR模式
 //        gc.setIdType(IdType.ASSIGN_ID);      // 设置主键策略
-        gc.setServiceName("%sService");      // 设置service名称，默认为IxxxService，去掉I
+//        gc.setServiceName("%sService");      // 设置service名称，默认为IxxxService，去掉I
         gc.setBaseResultMap(true);          // 生成的mapper.xml中包含基本的ResultMap结果集
         gc.setBaseColumnList(true);         // 生成基本的sql查询片段
         gc.setOpen(false);
@@ -47,26 +47,26 @@ public class MPDBConfig {
         strategy.setNaming(NamingStrategy.underline_to_camel);          // 下划线转驼峰命名
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);    // 下划线转驼峰命名
 //        strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
-        strategy.setInclude("stu");
+//        strategy.setInclude("stu");
         strategy.setInclude("users");
-        strategy.setInclude("admin");
-        strategy.setInclude("company");
-        strategy.setInclude("industry");
-        strategy.setInclude("data_dictionary");
-        strategy.setInclude("company_photo");
-        strategy.setInclude("resume");
-        strategy.setInclude("resume_education");
-        strategy.setInclude("resume_project_exp");
-        strategy.setInclude("resume_work_exp");
-        strategy.setInclude("sys_params");
-        strategy.setInclude("job_type");
-        strategy.setInclude("resume_expect");
-        strategy.setInclude("job");
-        strategy.setInclude("hr_collect_resume");
-        strategy.setInclude("article");
-        strategy.setInclude("chat_message");
-        strategy.setInclude("interview");
-        strategy.setInclude("orders");
+//        strategy.setInclude("admin");
+//        strategy.setInclude("company");
+//        strategy.setInclude("industry");
+//        strategy.setInclude("data_dictionary");
+//        strategy.setInclude("company_photo");
+//        strategy.setInclude("resume");
+//        strategy.setInclude("resume_education");
+//        strategy.setInclude("resume_project_exp");
+//        strategy.setInclude("resume_work_exp");
+//        strategy.setInclude("sys_params");
+//        strategy.setInclude("job_type");
+//        strategy.setInclude("resume_expect");
+//        strategy.setInclude("job");
+//        strategy.setInclude("hr_collect_resume");
+//        strategy.setInclude("article");
+//        strategy.setInclude("chat_message");
+//        strategy.setInclude("interview");
+//        strategy.setInclude("orders");
         autoGenerator.setStrategy(strategy);
 
         // 包名策略配置
