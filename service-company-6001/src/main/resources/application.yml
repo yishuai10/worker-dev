@@ -24,6 +24,9 @@ spring:
       connection-test-query: SELECT 1
   cloud:
     nacos:
+      config:
+        import-check:
+          enabled: false
       discovery:
         server-addr: 192.168.0.250:8848
         username: nacos

@@ -22,7 +22,8 @@
     <module>worker-api</module>
     <module>service-user-7001</module>
     <module>service-company-6001</module>
-      <module>gateway</module>
+      <module>gateway-service</module>
+    <module>auth-service</module>
   </modules>
 
   <properties>
@@ -35,7 +36,7 @@
     <mybatis-plus.version>3.5.7</mybatis-plus.version>
     <mybatis-spring.version>3.0.2</mybatis-spring.version>
     <mysql.version>8.0.26</mysql.version>
-    <cloud-bootstrap.version>3.0.2</cloud-bootstrap.version>
+<!--    <cloud-bootstrap.version>3.0.2</cloud-bootstrap.version>-->
   </properties>
 
   <parent>
@@ -65,11 +66,11 @@
         <scope>import</scope>
       </dependency>
       <!--  从2020.0开始，bootstrap.yml默认不开启，需要单独配置开启或引入这个依赖    -->
-      <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-bootstrap</artifactId>
-        <version>${cloud-bootstrap.version}</version>
-      </dependency>
+<!--      <dependency>-->
+<!--        <groupId>org.springframework.cloud</groupId>-->
+<!--        <artifactId>spring-cloud-starter-bootstrap</artifactId>-->
+<!--        <version>${cloud-bootstrap.version}</version>-->
+<!--      </dependency>-->
       <!--      MySQL驱动-->
       <dependency>
         <groupId>mysql</groupId>
@@ -217,12 +218,6 @@
         <version>6.1.1-1.5.10</version>
       </dependency>
 
-      <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>3.8.1</version>
-        <scope>test</scope>
-      </dependency>
     </dependencies>
   </dependencyManagement>
 

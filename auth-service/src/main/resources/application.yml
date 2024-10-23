@@ -1,12 +1,6 @@
-server:
-  port: 7001
-  tomcat:
-    uri-encoding: UTF-8
-    max-swallow-size: 1024
-
 spring:
   application:
-    name: user-service
+    name: auth-service
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -26,8 +20,21 @@ spring:
     nacos:
       config:
         import-check:
-          enabled: false # 禁用nacos检查，自己开发阶段用本地的yml配置
+          enabled: false
       discovery:
         server-addr: 192.168.0.250:8848
         username: nacos
         password: nacos
+
+  data:
+    redis:
+      host: 192.168.0.250
+      port: 6379
+      database: 0
+      password: redis_DiC3As
+
+server:
+  port: 8001
+  tomcat:
+    uri-encoding: UTF-8
+    max-swallow-size: 1024

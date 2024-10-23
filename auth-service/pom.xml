@@ -7,10 +7,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>service-company-6001</artifactId>
+    <artifactId>auth-service</artifactId>
     <packaging>jar</packaging>
 
-    <name>service-company-6001</name>
+    <name>auth-service</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -23,7 +23,6 @@
             <artifactId>worker-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>

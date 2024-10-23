@@ -7,10 +7,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>service-company-6001</artifactId>
+    <artifactId>gateway-service</artifactId>
     <packaging>jar</packaging>
 
-    <name>service-company-6001</name>
+    <name>gateway</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -20,18 +20,25 @@
     <dependencies>
         <dependency>
             <groupId>com.xiaoqiu</groupId>
-            <artifactId>worker-api</artifactId>
+            <artifactId>worker-common</artifactId>
             <version>1.0-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
         </dependency>
+
     </dependencies>
 </project>

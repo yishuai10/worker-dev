@@ -1,0 +1,37 @@
+server:
+  port: 8000
+  tomcat:
+    uri-encoding: UTF-8
+    max-swallow-size: 1024
+
+spring:
+  application:
+    name: gateway-service
+  config:
+    import: "optional:classpath:application.yml"
+  cloud:
+    nacos:
+      config:
+        import-check:
+          enabled: false
+      discovery:
+        server-addr: 192.168.0.250:8848
+        username: nacos
+        password: nacos
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: userRoute
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**
+        - id: companyRoute
+          uri: lb://company-service
+          predicates:
+            - Path=/company/**
+        - id: authRoute
+          uri: lb://auth-service
+          predicates:
+            - Path=/a/**,/passport/**
