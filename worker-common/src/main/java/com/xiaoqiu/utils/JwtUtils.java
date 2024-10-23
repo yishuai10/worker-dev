@@ -3,7 +3,7 @@ package com.xiaoqiu.utils;
 
 import cn.hutool.core.codec.Base64;
 import com.xiaoqiu.exception.GraceException;
-import com.xiaoqiu.resp.ResponseStatusEnum;
+import com.xiaoqiu.common.ResponseStatusEnum;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtParser;

@@ -92,29 +92,6 @@
         <version>${mybatis-plus.version}</version>
       </dependency>
 
-      <dependency>
-        <groupId>org.mongodb</groupId>
-        <artifactId>mongodb-driver</artifactId>
-        <version>3.12.14</version>
-      </dependency>
-
-      <!-- zookeeper -->
-      <dependency>
-        <groupId>org.apache.zookeeper</groupId>
-        <artifactId>zookeeper</artifactId>
-        <version>3.8.0</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.curator</groupId>
-        <artifactId>curator-framework</artifactId>
-        <version>5.6.0</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.curator</groupId>
-        <artifactId>curator-recipes</artifactId>
-        <version>5.6.0</version>
-      </dependency>
-
 
       <!-- jackson -->
       <dependency>
@@ -132,90 +109,6 @@
         <artifactId>jackson-databind</artifactId>
         <version>${jackson.version}</version>
       </dependency>
-
-      <!-- 百度API -->
-      <dependency>
-        <groupId>com.baidu.aip</groupId>
-        <artifactId>java-sdk</artifactId>
-        <version>4.16.8</version>
-      </dependency>
-
-      <!-- apache -->
-      <dependency>
-        <groupId>commons-codec</groupId>
-        <artifactId>commons-codec</artifactId>
-        <version>1.15</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-lang3</artifactId>
-        <version>3.12.0</version>
-      </dependency>
-      <dependency>
-        <groupId>commons-fileupload</groupId>
-        <artifactId>commons-fileupload</artifactId>
-        <version>1.4</version>
-      </dependency>
-      <dependency>
-        <groupId>commons-io</groupId>
-        <artifactId>commons-io</artifactId>
-        <version>2.11.0</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.httpcomponents</groupId>
-        <artifactId>httpclient</artifactId>
-        <version>4.5.14</version>
-      </dependency>
-
-      <!-- Google工具类 -->
-      <dependency>
-        <groupId>com.google.guava</groupId>
-        <artifactId>guava</artifactId>
-        <version>28.2-jre</version>
-      </dependency>
-
-      <!-- joda-time -->
-      <dependency>
-        <groupId>joda-time</groupId>
-        <artifactId>joda-time</artifactId>
-        <version>2.10.6</version>
-      </dependency>
-
-      <!-- knife4j -->
-      <dependency>
-        <groupId>com.github.xiaoymin</groupId>
-        <artifactId>knife4j-spring-boot-starter</artifactId>
-        <version>4.3.0</version>
-      </dependency>
-      <dependency>
-        <groupId>com.github.xiaoymin</groupId>
-        <artifactId>knife4j-springdoc-ui</artifactId>
-        <version>3.0.3</version>
-      </dependency>
-
-      <!-- minio -->
-      <dependency>
-        <groupId>io.minio</groupId>
-        <artifactId>minio</artifactId>
-        <version>8.2.1</version>
-      </dependency>
-
-      <dependency>
-        <groupId>com.googlecode.soundlibs</groupId>
-        <artifactId>mp3spi</artifactId>
-        <version>1.9.5.4</version>
-      </dependency>
-      <dependency>
-        <groupId>org.bytedeco</groupId>
-        <artifactId>javacv</artifactId>
-        <version>1.5.10</version>
-      </dependency>
-      <dependency>
-        <groupId>org.bytedeco</groupId>
-        <artifactId>ffmpeg-platform</artifactId>
-        <version>6.1.1-1.5.10</version>
-      </dependency>
-
     </dependencies>
   </dependencyManagement>
 

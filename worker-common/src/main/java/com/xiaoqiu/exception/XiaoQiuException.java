@@ -1,7 +1,7 @@
 package com.xiaoqiu.exception;
 
 
-import com.xiaoqiu.resp.ResponseStatusEnum;
+import com.xiaoqiu.common.ResponseStatusEnum;
 import lombok.Getter;
 import lombok.Setter;
 

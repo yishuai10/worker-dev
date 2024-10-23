@@ -1,5 +1,8 @@
 package com.xiaoqiu.pojo;
 
+import lombok.Data;
+
+import java.io.Serial;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.io.Serializable;
@@ -12,8 +15,10 @@ import java.io.Serializable;
  * @author 小秋
  * @since 2024-10-23
  */
+@Data
 public class Users implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private String id;
@@ -122,209 +127,4 @@ public class Users implements Serializable {
      * 更新时间
      */
     private LocalDateTime updatedTime;
-
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public String getRealName() {
-        return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName;
-    }
-
-    public Integer getShowWhichName() {
-        return showWhichName;
-    }
-
-    public void setShowWhichName(Integer showWhichName) {
-        this.showWhichName = showWhichName;
-    }
-
-    public Integer getSex() {
-        return sex;
-    }
-
-    public void setSex(Integer sex) {
-        this.sex = sex;
-    }
-
-    public String getFace() {
-        return face;
-    }
-
-    public void setFace(String face) {
-        this.face = face;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public LocalDate getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(LocalDate birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public void setProvince(String province) {
-        this.province = province;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public LocalDate getStartWorkDate() {
-        return startWorkDate;
-    }
-
-    public void setStartWorkDate(LocalDate startWorkDate) {
-        this.startWorkDate = startWorkDate;
-    }
-
-    public String getPosition() {
-        return position;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
-    public Integer getRole() {
-        return role;
-    }
-
-    public void setRole(Integer role) {
-        this.role = role;
-    }
-
-    public String getHrInWhichCompanyId() {
-        return hrInWhichCompanyId;
-    }
-
-    public void setHrInWhichCompanyId(String hrInWhichCompanyId) {
-        this.hrInWhichCompanyId = hrInWhichCompanyId;
-    }
-
-    public String getHrSignature() {
-        return hrSignature;
-    }
-
-    public void setHrSignature(String hrSignature) {
-        this.hrSignature = hrSignature;
-    }
-
-    public String getHrTags() {
-        return hrTags;
-    }
-
-    public void setHrTags(String hrTags) {
-        this.hrTags = hrTags;
-    }
-
-    public LocalDateTime getCreatedTime() {
-        return createdTime;
-    }
-
-    public void setCreatedTime(LocalDateTime createdTime) {
-        this.createdTime = createdTime;
-    }
-
-    public LocalDateTime getUpdatedTime() {
-        return updatedTime;
-    }
-
-    public void setUpdatedTime(LocalDateTime updatedTime) {
-        this.updatedTime = updatedTime;
-    }
-
-    @Override
-    public String toString() {
-        return "Users{" +
-        "id=" + id +
-        ", mobile=" + mobile +
-        ", nickname=" + nickname +
-        ", realName=" + realName +
-        ", showWhichName=" + showWhichName +
-        ", sex=" + sex +
-        ", face=" + face +
-        ", email=" + email +
-        ", birthday=" + birthday +
-        ", country=" + country +
-        ", province=" + province +
-        ", city=" + city +
-        ", district=" + district +
-        ", description=" + description +
-        ", startWorkDate=" + startWorkDate +
-        ", position=" + position +
-        ", role=" + role +
-        ", hrInWhichCompanyId=" + hrInWhichCompanyId +
-        ", hrSignature=" + hrSignature +
-        ", hrTags=" + hrTags +
-        ", createdTime=" + createdTime +
-        ", updatedTime=" + updatedTime +
-        "}";
-    }
 }

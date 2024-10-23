@@ -1,6 +1,6 @@
 package com.xiaoqiu.exception;
 
-import com.xiaoqiu.resp.ResponseStatusEnum;
+import com.xiaoqiu.common.ResponseStatusEnum;
 
 /**
  * 优雅的处理异常，统一进行封装

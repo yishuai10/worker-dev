@@ -3,6 +3,9 @@ package com.xiaoqiu.resp;
 import com.xiaoqiu.common.HttpStatusEnum;
 import lombok.Getter;
 
+/**
+ * @author xiaoqiu
+ */
 @Getter
 public class R<T> {
     /**
@@ -99,4 +102,3 @@ public class R<T> {
         return new R<>(HttpStatusEnum.FAIL.getCode(), false, msg, data);
     }
 }
-

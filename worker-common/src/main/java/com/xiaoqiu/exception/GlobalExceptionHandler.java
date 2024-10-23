@@ -1,7 +1,7 @@
 package com.xiaoqiu.exception;
 
 import com.xiaoqiu.resp.R;
-import com.xiaoqiu.resp.ResponseStatusEnum;
+import com.xiaoqiu.common.ResponseStatusEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;

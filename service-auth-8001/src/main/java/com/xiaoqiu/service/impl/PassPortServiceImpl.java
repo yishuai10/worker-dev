@@ -22,7 +22,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static com.xiaoqiu.resp.ResponseStatusEnum.SMS_CODE_ERROR;
+import static com.xiaoqiu.common.ResponseStatusEnum.SMS_CODE_ERROR;
 
 /**
  * @author xiaoqiu

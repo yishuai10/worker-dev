@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
-import com.xiaoqiu.resp.ResponseStatusEnum;
+import com.xiaoqiu.common.ResponseStatusEnum;
 import com.xiaoqiu.utils.IPUtil;
 import com.xiaoqiu.utils.RedisOperator;
 

@@ -9,31 +9,18 @@ package com.xiaoqiu.utils;
  *      手机号
  *      邮箱
  *      地址等
+ * @author xiaoqiu
  */
 public class DesensitizationUtil {
 
     private static final int SIZE = 6;
     private static final String SYMBOL = "*";
 
-    public static void main(String[] args) {
-        String name = commonDisplay("慕课网");
-        String mobile = commonDisplay("13900000000");
-        String mail = commonDisplay("admin@imooc.com");
-        String address = commonDisplay("北京大运河东路888号");
-
-        System.out.println(name);
-        System.out.println(mobile);
-        System.out.println(mail);
-        System.out.println(address);
-    }
-
     /**
      * 通用脱敏方法
-     * @param value
-     * @return
      */
     public static String commonDisplay(String value) {
-        if (null == value || "".equals(value)) {
+        if (null == value || value.isEmpty()) {
             return value;
         }
         int len = value.length();
@@ -75,5 +62,4 @@ public class DesensitizationUtil {
         }
         return stringBuilder.toString();
     }
-
 }
