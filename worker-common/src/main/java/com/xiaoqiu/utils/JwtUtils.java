@@ -2,8 +2,6 @@ package com.xiaoqiu.utils;
 
 
 import cn.hutool.core.codec.Base64;
-import com.xiaoqiu.exception.GraceException;
-import com.xiaoqiu.common.ResponseStatusEnum;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtParser;
@@ -36,10 +34,6 @@ public class JwtUtils {
      * @return token
      */
     public String createJwtWithPrefix(String body, Long expireTimes, String prefix) {
-        if (expireTimes == null) {
-            GraceException.display(ResponseStatusEnum.SYSTEM_NO_EXPIRE_ERROR);
-        }
-
         return prefix + AT + createJwt(body, expireTimes);
     }
 
@@ -52,10 +46,6 @@ public class JwtUtils {
     }
 
     public String createJwt(String body, Long expireTimes) {
-        if (expireTimes == null) {
-            GraceException.display(ResponseStatusEnum.SYSTEM_NO_EXPIRE_ERROR);
-        }
-
         return doCreateJwt(body, expireTimes);
     }
 

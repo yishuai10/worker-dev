@@ -1,6 +1,7 @@
 package com.xiaoqiu.resp;
 
 import com.xiaoqiu.common.HttpStatusEnum;
+import com.xiaoqiu.common.ResponseStatusEnum;
 import lombok.Getter;
 
 /**
@@ -100,5 +101,12 @@ public class R<T> {
      */
     public static <T> R<T> failed(String msg, T data) {
         return new R<>(HttpStatusEnum.FAIL.getCode(), false, msg, data);
+    }
+
+    /**
+     * 自定义返回
+     */
+    public static <T> R<T> response(ResponseStatusEnum statusEnum) {
+        return new R<>(statusEnum.status(), statusEnum.success(), statusEnum.msg(), null);
     }
 }
