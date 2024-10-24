@@ -35,3 +35,10 @@ spring:
           uri: lb://auth-service
           predicates:
             - Path=/a/**,/passport/**
+jwt:
+  security:
+    exclude-urls: /passport/getSMSCode, /passport/login, /passport/logout
+#     使用下面的方式，需要改成@ConfigurationProperties去注入
+#      - /passport/getSMSCode
+#      - /passport/login
+#      - /passport/logout
