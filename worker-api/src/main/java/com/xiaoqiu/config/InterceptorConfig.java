@@ -1,11 +1,14 @@
 package com.xiaoqiu.config;
 
-import com.xiaoqiu.intercept.SMSInterceptor;
+import com.xiaoqiu.intercept.SmsInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * @author xiaoqiu
+ */
 @Configuration
 public class InterceptorConfig implements WebMvcConfigurer {
 
@@ -13,8 +16,8 @@ public class InterceptorConfig implements WebMvcConfigurer {
      * 在springboot容器中放入拦截器
      */
     @Bean
-    public SMSInterceptor smsInterceptor() {
-        return new SMSInterceptor();
+    public SmsInterceptor smsInterceptor() {
+        return new SmsInterceptor();
     }
 
     /**

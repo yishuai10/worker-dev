@@ -1,6 +1,5 @@
 package com.xiaoqiu.controller;
 
-import com.xiaoqiu.base.RedisPrefix;
 import com.xiaoqiu.bo.GetSmsBo;
 import com.xiaoqiu.bo.LoginSmsBo;
 import com.xiaoqiu.resp.R;
@@ -10,7 +9,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author xiaoqiu
@@ -18,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/passport")
 @Slf4j
-public class PassportController extends RedisPrefix {
+public class PassportController {
 
 
     @Autowired

@@ -37,7 +37,7 @@ spring:
             - Path=/a/**,/passport/**,/saas/**
 jwt:
   security:
-    exclude-urls: /passport/getSMSCode, /passport/login, /passport/logout, /saas/getQRToken,/saas/scanCode,/saas/codeHasBeenRead,/saas/goQRLogin,/saas/checkLogin,/saas/info,/saas/logout
+    exclude-urls: /passport/getSMSCode, /passport/login, /passport/logout, /saas/getQRToken,/saas/scanCode,/saas/codeHasBeenRead,/saas/goQRLogin,/saas/checkLogin,/saas/info,/saas/logout,/admin/login,/admin/logout,/admin_info/create
 #     使用下面的方式，需要改成@ConfigurationProperties去注入
 #      - /passport/getSMSCode
 #      - /passport/login

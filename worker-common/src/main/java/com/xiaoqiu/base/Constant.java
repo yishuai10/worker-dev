@@ -1,9 +1,16 @@
 package com.xiaoqiu.base;
 
 
-public class RedisPrefix {
+/**
+ * @author xiaoqiu
+ */
+public class Constant {
 
     public static final String SYMBOL_DOT = ".";       // 小圆点，无意义，可用可不用
+
+    public static final String USER_TOKEN_APP_PREFIX = "app_";
+    public static final String USER_TOKEN_WEB_PREFIX = "web_";
+    public static final long ONE_DAY = 24 * 60 * 60 * 1000;
 
     public static final String TOKEN_USER_PREFIX = "app";       // app端的用户token前缀
     public static final String TOKEN_SAAS_PREFIX = "saas";      // 企业saas平台的用户token前缀

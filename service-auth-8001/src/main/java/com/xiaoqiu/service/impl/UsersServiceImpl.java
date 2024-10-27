@@ -38,7 +38,7 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
         return usersMapper.selectOne(new QueryWrapper<Users>().eq("mobile", mobile));
     }
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public Users createUsers(String mobile) {
         Users user = getDefaultUsers(mobile);

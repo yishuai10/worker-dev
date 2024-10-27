@@ -97,5 +97,4 @@ public class JwtUtils {
         Jws<Claims> jws = jwtParser.parseClaimsJws(pendingJwt);
         return jws.getBody().getSubject();
     }
-
 }

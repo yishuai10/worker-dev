@@ -5,8 +5,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
+/**
+ * @author xiaoqiu
+ */
 @SpringBootApplication
-@EnableDiscoveryClient  // 开启服务的注册与发现功能
+@EnableDiscoveryClient
 @MapperScan(basePackages = "com.xiaoqiu.mapper")
 public class AuthApplication {
 
