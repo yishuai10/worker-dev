@@ -20,10 +20,10 @@
     <module>worker-common</module>
     <module>worker-pojo</module>
     <module>worker-api</module>
-    <module>service-user-7001</module>
-    <module>service-company-6001</module>
-      <module>service-gateway-8000</module>
-    <module>service-auth-8001</module>
+    <module>service-user-17001</module>
+    <module>service-company-16001</module>
+      <module>service-gateway-18000</module>
+    <module>service-auth-18001</module>
   </modules>
 
   <properties>

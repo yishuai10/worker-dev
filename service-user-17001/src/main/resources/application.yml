@@ -1,12 +1,12 @@
 server:
-  port: 6001
+  port: 17001
   tomcat:
     uri-encoding: UTF-8
     max-swallow-size: 1024
 
 spring:
   application:
-    name: company-service
+    name: user-service
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -26,7 +26,7 @@ spring:
     nacos:
       config:
         import-check:
-          enabled: false
+          enabled: false # 禁用nacos检查，自己开发阶段用本地的yml配置
       discovery:
         server-addr: 192.168.0.250:8848
         username: nacos

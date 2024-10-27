@@ -7,7 +7,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>service-auth-8001</artifactId>
+    <artifactId>service-auth-18001</artifactId>
     <packaging>jar</packaging>
 
     <name>auth-service</name>

@@ -7,22 +7,37 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>service-user-7001</artifactId>
+    <artifactId>service-gateway-18000</artifactId>
     <packaging>jar</packaging>
 
-    <name>service-user-7001</name>
+    <name>gateway</name>
     <url>http://maven.apache.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-
     <dependencies>
         <dependency>
             <groupId>com.xiaoqiu</groupId>
-            <artifactId>worker-api</artifactId>
+            <artifactId>worker-common</artifactId>
             <version>1.0-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
         </dependency>
 
     </dependencies>
