@@ -8,7 +8,7 @@ public class R<T> {
     /**
      * 标识返回状态
      */
-    private Integer code;
+    private Integer status;
 
     /**
      * 标识返回是否成功
@@ -18,7 +18,7 @@ public class R<T> {
     /**
      * 标识返回消息
      */
-    private String message;
+    private String msg;
 
     /**
      * 标识返回内容
@@ -30,16 +30,16 @@ public class R<T> {
     }
 
     public R(T data) {
-        this.code = HttpStatusEnum.SUCCESS.getCode();
+        this.status = HttpStatusEnum.SUCCESS.getCode();
         this.success = true;
-        this.message = HttpStatusEnum.SUCCESS.getMessage();
+        this.msg = HttpStatusEnum.SUCCESS.getMessage();
         this.data = data;
     }
 
-    public R(Integer code, Boolean success, String message, T data) {
-        this.code = code;
+    public R(Integer status, Boolean success, String msg, T data) {
+        this.status = status;
         this.success = success;
-        this.message = message;
+        this.msg = msg;
         this.data = data;
     }
 

@@ -36,7 +36,7 @@ spring:
       password: redis_DiC3As
 
 server:
-  port: 8001
+  port: 18001
   tomcat:
     uri-encoding: UTF-8
     max-swallow-size: 1024

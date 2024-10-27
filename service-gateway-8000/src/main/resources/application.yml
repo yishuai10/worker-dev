@@ -1,5 +1,5 @@
 server:
-  port: 8000
+  port: 18000
   tomcat:
     uri-encoding: UTF-8
     max-swallow-size: 1024
@@ -37,7 +37,7 @@ spring:
             - Path=/a/**,/passport/**,/saas/**
 jwt:
   security:
-    exclude-urls: /passport/getSMSCode, /passport/login, /passport/logout, /saas/getQRToken
+    exclude-urls: /passport/getSMSCode, /passport/login, /passport/logout, /saas/getQRToken,/saas/scanCode,/saas/codeHasBeenRead,/saas/goQRLogin,/saas/checkLogin,/saas/info,/saas/logout
 #     使用下面的方式，需要改成@ConfigurationProperties去注入
 #      - /passport/getSMSCode
 #      - /passport/login
