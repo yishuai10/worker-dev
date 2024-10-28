@@ -30,7 +30,12 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
 
     @Override
     public AdminVO info(String token) {
-        String adminStr = jwtUtils.checkJwtAndGetSubject(token);
+        String[] split = token.split("@");
+        if (split.length < 2) {
+            GraceException.display(ResponseStatusEnum.JWT_SIGNATURE_ERROR);
+        }
+
+        String adminStr = jwtUtils.checkJwtAndGetSubject(split[1]);
         Admin admin = JSONUtil.toBean(adminStr, Admin.class);
         return new AdminVO(admin.getUsername(), admin.getFace());
     }
