@@ -44,3 +44,5 @@ spring:
     virtual-host: /
     username: xiaoqiu
     password: xiaoqiu
+    publisher-confirm-type: correlated
+    publisher-returns: true
