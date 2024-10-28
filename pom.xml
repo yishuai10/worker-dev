@@ -24,6 +24,7 @@
     <module>service-company-16001</module>
       <module>service-gateway-18000</module>
     <module>service-auth-18001</module>
+      <module>service-resource-15001</module>
   </modules>
 
   <properties>

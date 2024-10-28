@@ -1,11 +1,12 @@
 server:
-  port: 18001
+  port: 15001
   tomcat:
     uri-encoding: UTF-8
     max-swallow-size: 1024
+
 spring:
   application:
-    name: auth-service
+    name: resource-service
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -21,8 +22,6 @@ spring:
       pool-name: DataSourceHikariCP
       auto-commit: true
       connection-test-query: SELECT 1
-  jackson:
-    property-naming-strategy: SNAKE_CASE
   cloud:
     nacos:
       config:
@@ -32,15 +31,13 @@ spring:
         server-addr: 192.168.0.250:8848
         username: nacos
         password: nacos
-  data:
-    redis:
-      host: 192.168.0.250
-      port: 6379
-      database: 0
-      password: redis_DiC3As
   rabbitmq:
     host: 192.168.0.250
     port: 5672
     virtual-host: /
     username: xiaoqiu
     password: xiaoqiu
+#    listener:
+#      simple:
+#        acknowledge-mode: manual  # 手动ack确认
+  #        prefetch: 2  # 每次每个消费者从mq中拉去的消息的数量，直到手动ack确认之后，才会拉去下个消息

@@ -5,7 +5,9 @@ import com.xiaoqiu.base.Constant;
 import com.xiaoqiu.bo.GetSmsBo;
 import com.xiaoqiu.bo.LoginSmsBo;
 import com.xiaoqiu.exception.XiaoQiuException;
+import com.xiaoqiu.mq.RabbitMQSMSConfig;
 import com.xiaoqiu.pojo.Users;
+import com.xiaoqiu.qo.SmsContentQo;
 import com.xiaoqiu.service.IPassPortService;
 import com.xiaoqiu.service.IUsersService;
 import com.xiaoqiu.utils.IPUtil;
@@ -16,6 +18,7 @@ import com.xiaoqiu.vo.UsersVO;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +39,8 @@ public class PassPortServiceImpl implements IPassPortService {
     private IUsersService usersService;
     @Autowired
     private JwtUtils jwtUtils;
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     @Override
     public void getSmsCode(GetSmsBo smsBo, HttpServletRequest request) {
@@ -44,8 +49,11 @@ public class PassPortServiceImpl implements IPassPortService {
         redis.setnx60s(Constant.MOBILE_SMSCODE + ":" + userIp, smsBo.getMobile());
 
         String code = (int)((Math.random() * 9 + 1) * 100000) + "";
-        smsUtils.sendSMS(smsBo.getMobile(), code);
-        log.info("手机号为： {}, 验证码为：{}", smsBo, code);
+//        smsUtils.sendSMS(smsBo.getMobile(), code); 改成队列发送
+        SmsContentQo smsContentQo = new SmsContentQo(smsBo.getMobile(), code);
+        rabbitTemplate.convertAndSend(RabbitMQSMSConfig.SMS_EXCHANGE, RabbitMQSMSConfig.ROUTING_KEY_SMS_SEND_LOGIN,
+                                        JSONUtil.toJsonStr(smsContentQo));
+
         // 把验证码存入到redis，用于后续的注册登录进行校验
         redis.set(Constant.MOBILE_SMSCODE + ":" + smsBo.getMobile(), code, 3 * 60);
     }

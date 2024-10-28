@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import com.xiaoqiu.resp.ResponseStatusEnum;
 
+/**
+ * @author xiaoqiu
+ */
 @Component
 @Slf4j
 public class SMSUtils {
