@@ -1,5 +1,6 @@
 package com.xiaoqiu.mq;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.*;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -9,8 +10,9 @@ import org.springframework.context.annotation.Configuration;
  * RabbitMQ 的配置类
  * @author xiaoqiu
  */
+@Slf4j
 @Configuration
-public class RabbitMQSMSConfig {
+public class RabbitMqSmsConfig {
 
     /**
      * 定义交换机的名称
@@ -30,21 +32,26 @@ public class RabbitMQSMSConfig {
     @Bean(SMS_EXCHANGE)
     public Exchange exchange() {
         return ExchangeBuilder
-                    .topicExchange(SMS_EXCHANGE)
-                    .durable(true)
-                    .build();
+                .topicExchange(SMS_EXCHANGE)
+                .durable(true)
+                .build();
     }
 
     @Bean(SMS_QUEUE)
     public Queue queue() {
+        log.info("创建短信队列");
         return QueueBuilder
                 .durable(SMS_QUEUE)
-                .withArgument("x-message-ttl", 30*1000)
-                .withArgument("x-dead-letter-exchange",
-                        RabbitMQSMSConfig_Dead.SMS_EXCHANGE_DEAD)
-                .withArgument("x-dead-letter-routing-key",
-                        RabbitMQSMSConfig_Dead.ROUTING_KEY_SMS_DEAD)
+                // 队列超时时间，可以和消息队列超时时间共用
+                .withArgument("x-message-ttl", 30 * 1000)
+                // 队列最大长度
                 .withArgument("x-max-length", 6)
+                // 死信队列交换机
+                .withArgument("x-dead-letter-exchange",
+                        RabbitMqSmsConfigDead.SMS_EXCHANGE_DEAD)
+                // 死信队列路由key
+                .withArgument("x-dead-letter-routing-key",
+                        RabbitMqSmsConfigDead.ROUTING_KEY_SMS_DEAD)
                 .build();
     }
 

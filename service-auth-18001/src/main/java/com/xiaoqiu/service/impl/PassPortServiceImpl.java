@@ -5,7 +5,7 @@ import com.xiaoqiu.base.Constant;
 import com.xiaoqiu.bo.GetSmsBo;
 import com.xiaoqiu.bo.LoginSmsBo;
 import com.xiaoqiu.exception.XiaoQiuException;
-import com.xiaoqiu.mq.RabbitMQSMSConfig;
+import com.xiaoqiu.mq.RabbitMqSmsConfig;
 import com.xiaoqiu.pojo.Users;
 import com.xiaoqiu.qo.SmsContentQo;
 import com.xiaoqiu.service.IPassPortService;
@@ -18,10 +18,13 @@ import com.xiaoqiu.vo.UsersVO;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.amqp.core.MessagePostProcessor;
+import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import static com.xiaoqiu.resp.ResponseStatusEnum.SMS_CODE_ERROR;
@@ -41,6 +44,7 @@ public class PassPortServiceImpl implements IPassPortService {
     @Autowired
     private JwtUtils jwtUtils;
     @Autowired
+    @Qualifier("xiaoqiuRabbitTemplate")
     private RabbitTemplate rabbitTemplate;
 
     @Override
@@ -52,35 +56,18 @@ public class PassPortServiceImpl implements IPassPortService {
         String code = (int)((Math.random() * 9 + 1) * 100000) + "";
 //        smsUtils.sendSMS(smsBo.getMobile(), code); 改成队列发送
         SmsContentQo smsContentQo = new SmsContentQo(smsBo.getMobile(), code);
-        rabbitTemplate.convertAndSend(RabbitMQSMSConfig.SMS_EXCHANGE, RabbitMQSMSConfig.ROUTING_KEY_SMS_SEND_LOGIN,
-                                        JSONUtil.toJsonStr(smsContentQo));
 
-        // 消息可靠性投递-定义confirm回调（生产者 - exchange之间的错误）
-        rabbitTemplate.setConfirmCallback(new RabbitTemplate.ConfirmCallback() {
-            /**
-             * 回调函数
-             * @param correlationData 相关性数据
-             * @param ack 交换机是否成功接收到消息，true：成功
-             * @param cause 失败的原因
-             */
-            @Override
-            public void confirm(CorrelationData correlationData,
-                                boolean ack,
-                                String cause) {
-                log.info("进入confirm， correlationData：{}", correlationData.getId());
-                if (ack) {
-                    log.info("交换机成功接收到消息！");
-                } else {
-                    log.info("交换机接收消息失败！失败原因： {}", cause);
-                }
-            }
-        });
+        // 设置消息参数
+        MessagePostProcessor messagePostProcessor = message -> {
+            MessageProperties messageProperties = message.getMessageProperties();
+            messageProperties.setExpiration(String.valueOf(10 * 1000));
+            return message;
+        };
 
-        // 消息可靠性投递- 定义return回调（exchange - routing_key之间的错误）
-        rabbitTemplate.setReturnsCallback(returned -> {
-            log.info("进入return");
-            log.info(returned.toString());
-        });
+        for (int i = 0; i < 10; i++) {
+            rabbitTemplate.convertAndSend(RabbitMqSmsConfig.SMS_EXCHANGE, RabbitMqSmsConfig.ROUTING_KEY_SMS_SEND_LOGIN,
+                i + JSONUtil.toJsonStr(smsContentQo), messagePostProcessor, new CorrelationData(i + ""));
+        }
 
         // 把验证码存入到redis，用于后续的注册登录进行校验
         redis.set(Constant.MOBILE_SMSCODE + ":" + smsBo.getMobile(), code, 3 * 60);

@@ -4,7 +4,6 @@ import com.rabbitmq.client.Channel;
 import com.xiaoqiu.utils.SMSUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -41,7 +40,7 @@ public class RabbitMqSmsConsumer {
     /**
      * 手动ACK机制确认消息
      */
-    @RabbitListener(queues = {RabbitMQSMSConfig.SMS_QUEUE})
+//    @RabbitListener(queues = {RabbitMqSmsConfig.SMS_QUEUE})
     public void watchQueue(Message message, Channel channel) throws Exception {
 
         try {

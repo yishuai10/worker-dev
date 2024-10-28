@@ -9,9 +9,10 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * RabbitMQ 的配置类(用于死信队列的配置)
+ * @author xiaoqiu
  */
 @Configuration
-public class RabbitMQSMSConfig_Dead {
+public class RabbitMqSmsConfigDead {
 
     /**
      * 定义交换机的名称
