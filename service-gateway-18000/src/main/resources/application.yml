@@ -38,7 +38,10 @@ spring:
         - id: workRoute
           uri: lb://work-service
           predicates:
-            - Path=/work/**
+            - Path=/work/**,/resume/**
+    loadbalancer:
+      nacos:
+        enabled: true # 开启nacos的负载均衡
 jwt:
   security:
     exclude-urls: /passport/getSMSCode, /passport/login, /passport/logout, /saas/getQRToken,/saas/scanCode,/saas/codeHasBeenRead,/saas/goQRLogin,/saas/checkLogin,/saas/info,/saas/logout,/admin/login,/admin/logout,/admin_info/create

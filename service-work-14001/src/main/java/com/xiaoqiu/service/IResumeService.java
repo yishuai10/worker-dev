@@ -2,6 +2,7 @@ package com.xiaoqiu.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xiaoqiu.pojo.Resume;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -13,4 +14,6 @@ import com.xiaoqiu.pojo.Resume;
  */
 public interface IResumeService extends IService<Resume> {
 
+    @Transactional
+    void initResume(String userId);
 }

@@ -1,9 +1,11 @@
 package com.xiaoqiu.service.impl;
 
 import cn.hutool.json.JSONUtil;
+import com.alibaba.nacos.common.utils.UuidUtils;
 import com.xiaoqiu.base.Constant;
 import com.xiaoqiu.bo.GetSmsBo;
 import com.xiaoqiu.bo.LoginSmsBo;
+import com.xiaoqiu.client.WorkResumeServiceFeign;
 import com.xiaoqiu.exception.XiaoQiuException;
 import com.xiaoqiu.mq.RabbitMqSmsConfig;
 import com.xiaoqiu.pojo.Users;
@@ -46,6 +48,8 @@ public class PassPortServiceImpl implements IPassPortService {
     @Autowired
     @Qualifier("xiaoqiuRabbitTemplate")
     private RabbitTemplate rabbitTemplate;
+    @Autowired
+    private WorkResumeServiceFeign workResumeServiceFeign;
 
     @Override
     public void getSmsCode(GetSmsBo smsBo, HttpServletRequest request) {
@@ -64,10 +68,8 @@ public class PassPortServiceImpl implements IPassPortService {
             return message;
         };
 
-        for (int i = 0; i < 10; i++) {
-            rabbitTemplate.convertAndSend(RabbitMqSmsConfig.SMS_EXCHANGE, RabbitMqSmsConfig.ROUTING_KEY_SMS_SEND_LOGIN,
-                i + JSONUtil.toJsonStr(smsContentQo), messagePostProcessor, new CorrelationData(i + ""));
-        }
+        rabbitTemplate.convertAndSend(RabbitMqSmsConfig.SMS_EXCHANGE, RabbitMqSmsConfig.ROUTING_KEY_SMS_SEND_LOGIN,
+                JSONUtil.toJsonStr(smsContentQo), messagePostProcessor, new CorrelationData(UuidUtils.generateUuid()));
 
         // 把验证码存入到redis，用于后续的注册登录进行校验
         redis.set(Constant.MOBILE_SMSCODE + ":" + smsBo.getMobile(), code, 3 * 60);
@@ -87,6 +89,8 @@ public class PassPortServiceImpl implements IPassPortService {
         if (user == null) {
             // 2.1 如果查询的用户为空，则表示没有注册过，则需要注册信息入库
             user = usersService.createUsers(mobile);
+            // 初始化简历
+            workResumeServiceFeign.init(user.getId());
         }
 
         // 3. 创建token

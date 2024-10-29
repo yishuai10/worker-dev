@@ -1,9 +1,12 @@
 package com.xiaoqiu.mq;
 
+import cn.hutool.json.JSONUtil;
 import com.rabbitmq.client.Channel;
+import com.xiaoqiu.qo.SmsContentQo;
 import com.xiaoqiu.utils.SMSUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -40,7 +43,7 @@ public class RabbitMqSmsConsumer {
     /**
      * 手动ACK机制确认消息
      */
-//    @RabbitListener(queues = {RabbitMqSmsConfig.SMS_QUEUE})
+    @RabbitListener(queues = {RabbitMqSmsConfig.SMS_QUEUE})
     public void watchQueue(Message message, Channel channel) throws Exception {
 
         try {
@@ -49,6 +52,11 @@ public class RabbitMqSmsConsumer {
             String msg = new String(message.getBody());
             log.info("msg = " + msg);
 
+            if (routingKey.equalsIgnoreCase(RabbitMqSmsConfig.ROUTING_KEY_SMS_SEND_LOGIN)) {
+                // 此处为短信发送的消息消费处理
+                SmsContentQo contentQo = JSONUtil.toBean(msg, SmsContentQo.class);
+                smsUtils.sendSMS(contentQo.getMobile(), contentQo.getContent());
+            }
             /*
                   deliveryTag: 消息投递的标签
                   multiple: 批量确认所有消费者获得的消息
