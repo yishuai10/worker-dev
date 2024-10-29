@@ -49,12 +49,12 @@ public class MPDBConfig {
 //        strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
 //        strategy.setInclude("stu");
 //        strategy.setInclude("users");
-        strategy.setInclude("admin");
+//        strategy.setInclude("admin");
 //        strategy.setInclude("company");
 //        strategy.setInclude("industry");
 //        strategy.setInclude("data_dictionary");
 //        strategy.setInclude("company_photo");
-//        strategy.setInclude("resume");
+        strategy.setInclude("resume");
 //        strategy.setInclude("resume_education");
 //        strategy.setInclude("resume_project_exp");
 //        strategy.setInclude("resume_work_exp");
