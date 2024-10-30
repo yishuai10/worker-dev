@@ -27,11 +27,11 @@ public class GlobalExceptionHandler {
     /**
      * 处理算数异常
      */
-//    @ExceptionHandler(value = ArithmeticException.class)
-//    public R<String> bizArithmeticExceptionHandler(ArithmeticException e) {
-//        log.error("发生算数异常！ msg: -> ", e);
-//        return R.failed(e.getMessage());
-//    }
+    @ExceptionHandler(value = ArithmeticException.class)
+    public R<String> bizArithmeticExceptionHandler(ArithmeticException e) {
+        log.error("发生算数异常！ msg: -> ", e);
+        return R.failed(e.getMessage());
+    }
 
     /**
      * 处理自定义的业务异常
