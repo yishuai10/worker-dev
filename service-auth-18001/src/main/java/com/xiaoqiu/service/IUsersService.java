@@ -2,7 +2,6 @@ package com.xiaoqiu.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xiaoqiu.pojo.Users;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -16,6 +15,5 @@ public interface IUsersService extends IService<Users> {
 
     Users queryUserByMobile(String mobile);
 
-    @Transactional
     Users createUsers(String mobile);
 }

@@ -5,7 +5,6 @@ import com.alibaba.nacos.common.utils.UuidUtils;
 import com.xiaoqiu.base.Constant;
 import com.xiaoqiu.bo.GetSmsBo;
 import com.xiaoqiu.bo.LoginSmsBo;
-import com.xiaoqiu.client.WorkResumeServiceFeign;
 import com.xiaoqiu.exception.XiaoQiuException;
 import com.xiaoqiu.mq.RabbitMqSmsConfig;
 import com.xiaoqiu.pojo.Users;
@@ -48,8 +47,6 @@ public class PassPortServiceImpl implements IPassPortService {
     @Autowired
     @Qualifier("xiaoqiuRabbitTemplate")
     private RabbitTemplate rabbitTemplate;
-    @Autowired
-    private WorkResumeServiceFeign workResumeServiceFeign;
 
     @Override
     public void getSmsCode(GetSmsBo smsBo, HttpServletRequest request) {
@@ -89,8 +86,6 @@ public class PassPortServiceImpl implements IPassPortService {
         if (user == null) {
             // 2.1 如果查询的用户为空，则表示没有注册过，则需要注册信息入库
             user = usersService.createUsers(mobile);
-            // 初始化简历
-            workResumeServiceFeign.init(user.getId());
         }
 
         // 3. 创建token

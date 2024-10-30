@@ -2,16 +2,17 @@ package com.xiaoqiu.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.xiaoqiu.client.WorkResumeServiceFeign;
 import com.xiaoqiu.common.SexEnum;
 import com.xiaoqiu.common.ShowWhichName;
 import com.xiaoqiu.mapper.UsersMapper;
 import com.xiaoqiu.pojo.Users;
 import com.xiaoqiu.service.IUsersService;
 import com.xiaoqiu.utils.DesensitizationUtil;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -29,6 +30,8 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
 
     @Autowired
     private UsersMapper usersMapper;
+    @Autowired
+    private WorkResumeServiceFeign workResumeServiceFeign;
 
     @Value("${user.default.config.face.path:}")
     private String defaultFacePath;
@@ -38,12 +41,17 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
         return usersMapper.selectOne(new QueryWrapper<Users>().eq("mobile", mobile));
     }
 
-    @Transactional(rollbackFor = Exception.class)
+    @GlobalTransactional
     @Override
     public Users createUsers(String mobile) {
         Users user = getDefaultUsers(mobile);
         user.setMobile(mobile);
         usersMapper.insert(user);
+
+        // 初始化简历
+        workResumeServiceFeign.init(user.getId());
+        // 模拟除0异常
+        int a = 1 / 0;
         return user;
     }
 

@@ -28,6 +28,8 @@ public class ResumeServiceImpl extends ServiceImpl<ResumeMapper, Resume> impleme
     @Transactional(rollbackFor = {Exception.class})
     @Override
     public void initResume(String userId) {
+        // 模拟除0异常
+//        int a = 1/0;
         Resume resume = new Resume();
         resume.setUserId(userId);
         resume.setCreateTime(LocalDateTime.now());

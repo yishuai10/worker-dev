@@ -31,3 +31,23 @@ spring:
         server-addr: 192.168.0.250:8848
         username: nacos
         password: nacos
+
+# 配置seata
+seata:
+  enabled: true
+  tx-service-group: xiaoqiu_tx_group
+  service:
+    vgroup-mapping:
+      xiaoqiu_tx_group: SEATA_GROUP
+    grouplist:
+      SEATA_GROUP: 192.168.0.250:8091
+  config:
+    nacos:
+      server-addr: 192.168.0.250:8848
+      username: nacos
+      password: nacos
+  registry:
+    nacos:
+      server-addr: 192.168.0.250:8848
+      username: nacos
+      password: nacos
